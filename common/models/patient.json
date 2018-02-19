@@ -1,0 +1,118 @@
+{
+  "name": "Patient",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "img_url": {
+      "type": "string",
+      "default": "https://pbs.twimg.com/profile_images/67218188/seton_cross_400x400.png"
+    },
+    "ministry_id": {
+      "type": "string"
+    },
+    "mrn": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "middle_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "dob": {
+      "type": "date"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "address1": {
+      "type": "string"
+    },
+    "address2": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "county": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "home_phone": {
+      "type": "number"
+    },
+    "work_phone": {
+      "type": "number"
+    },
+    "mobile_phone": {
+      "type": "number"
+    },
+    "email": {
+      "type": "string"
+    },
+    "employer_name": {
+      "type": "string"
+    },
+    "preferred_contact_method": {
+      "type": "string"
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "locked_by": {
+      "type": "string"
+    },
+    "locked_date_time": {
+      "type": "date"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date",
+      "default": null
+    },
+    "deletedAt": {
+      "type": "date",
+      "default": null
+    },
+    "version": {
+      "type": "number"
+    },
+    "opt_out": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "calls": {
+      "type": "hasMany",
+      "model": "Call",
+      "foreignKey": ""
+    },
+    "notes": {
+      "type": "hasMany",
+      "model": "Note",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

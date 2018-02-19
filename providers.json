@@ -1,0 +1,23 @@
+{
+  "ms-ad": {
+    "provider": "ms-ad",
+    "authScheme":"ldap",
+    "module": "passport-ldapauth",
+    "authPath": "/auth/msad",
+    "successRedirect": "/auth/account",
+    "failureRedirect": "/msad",
+    "failureFlash": true,
+    "session": true,
+    "LdapAttributeForLogin": "mail",
+    "LdapAttributeForUsername": "mail",
+    "LdapAttributeForMail": "mail",
+    "server":{
+      "url": "ldap://txausldap:389",
+      "bindDn": "dc=TXAUS,dc=DS,dc=SJHS,dc=com",
+      "bindCredentials": "2013Happy",
+      "searchBase": "ou=people,dc=example,dc=org",
+      "searchAttributes": ["cn", "mail", "uid", "givenname"],
+      "searchFilter": "(&(objectcategory=person)(objectclass=user)(|(samaccountname=)(mail=)))"
+    }
+  }
+}

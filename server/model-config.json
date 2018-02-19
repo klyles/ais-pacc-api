@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": true
+  },
+  "ApplicationCredential": {
+    "dataSource": "db",
+    "public": false
+  },
+  "UserIdentity": {
+    "dataSource": "db",
+    "public": true
+  },
+  "UserCredential": {
+    "dataSource": "db",
+    "public": true
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": true
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Patient": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Call": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Call_Status": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Call_Outcome": {
+    "dataSource": "db",
+    "public": true
+  },
+  "State": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Note": {
+    "dataSource": "db",
+    "public": true
+  }
+}

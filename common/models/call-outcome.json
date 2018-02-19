@@ -1,0 +1,39 @@
+{
+  "name": "Call_Outcome",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "outcome_desc": {
+      "type": "string"
+    },
+    "call_group": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "sort_order": {
+      "type": "number"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date",
+      "default": null
+    }
+  },
+  "validations": [],
+  "relations": {
+    "call": {
+      "type": "belongsTo",
+      "model": "Call",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

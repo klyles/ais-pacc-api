@@ -1,0 +1,36 @@
+{
+  "name": "State",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "full_name": {
+      "type": "string"
+    },
+    "state_id": {
+      "type": "number"
+    },
+    "state_code": {
+      "type": "string"
+    },
+    "fips_code": {
+      "type": "string"
+    },
+    "gnsid_code": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date",
+      "default": null
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

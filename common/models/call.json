@@ -1,0 +1,65 @@
+{
+  "name": "Call",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "call_status_id": {
+      "type": "number"
+    },
+    "call_outcome_id": {
+      "type": "number"
+    },
+    "call_note_id": {
+      "type": "number"
+    },
+    "call_start_date_time": {
+      "type": "date"
+    },
+    "call_stop_date_time": {
+      "type": "date"
+    },
+    "call_agent": {
+      "type": "string"
+    },
+    "nurses_queue": {
+      "type": "boolean"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date"
+    },
+    "deletedAt": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "patient": {
+      "type": "belongsTo",
+      "model": "Patient",
+      "foreignKey": ""
+    },
+    "callStatuses": {
+      "type": "hasOne",
+      "model": "Call_Status",
+      "foreignKey": ""
+    },
+    "callOutcomes": {
+      "type": "hasMany",
+      "model": "Call_Outcome",
+      "foreignKey": ""
+    },
+    "notes": {
+      "type": "hasMany",
+      "model": "Note",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
