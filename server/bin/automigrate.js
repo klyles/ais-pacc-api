@@ -29,6 +29,11 @@ dataSource.automigrate('State', function(err) {
   dataSource.disconnect();
 });
 
+dataSource.automigrate('Note', function(err) {
+  if (err) throw err;
+  dataSource.disconnect();
+});
+
 
 // dataSource.isActual(models, function(err, actual) {
 //   if (!actual) {

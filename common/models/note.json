@@ -10,10 +10,6 @@
       "type": "number",
       "required": true
     },
-    "patientId": {
-      "type": "number",
-      "required": true
-    },
     "note_text": {
       "type": "string"
     },
