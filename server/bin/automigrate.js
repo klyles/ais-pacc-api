@@ -35,11 +35,11 @@ dataSource.automigrate('Note', function(err) {
 });
 
 
-// dataSource.isActual(models, function(err, actual) {
-//   if (!actual) {
-//     dataSource.autoupdate(models, function(err, result) {
-//       if (err) throw err;
-//       dataSource.disconnect();
-//     });
-//   }
-// });
+dataSource.isActual(models, function(err, actual) {
+  if (!actual) {
+    dataSource.autoupdate(models, function(err, result) {
+      if (err) throw err;
+      dataSource.disconnect();
+    });
+  }
+});
