@@ -69,7 +69,7 @@
     "dataSource": "db",
     "public": true
   },
-  "note": {
+  "Note": {
     "dataSource": "db",
     "public": true
   }
