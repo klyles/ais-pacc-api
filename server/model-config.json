@@ -68,5 +68,9 @@
   "State": {
     "dataSource": "db",
     "public": true
+  },
+  "note": {
+    "dataSource": "db",
+    "public": true
   }
 }
