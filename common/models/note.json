@@ -1,5 +1,5 @@
 {
-  "name": "note",
+  "name": "Note",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -30,7 +30,12 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "patient": {
+      "type": "belongsTo",
+      "model": "Patient",
+      "foreignKey": ""
+    },
   "acls": [],
   "methods": {}
 }
