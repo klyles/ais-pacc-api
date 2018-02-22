@@ -35,7 +35,8 @@
       "type": "belongsTo",
       "model": "Patient",
       "foreignKey": ""
-    },
+    }
+  },
   "acls": [],
   "methods": {}
 }
