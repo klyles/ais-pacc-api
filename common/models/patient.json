@@ -106,11 +106,6 @@
       "type": "hasMany",
       "model": "Call",
       "foreignKey": ""
-    },
-    "notes": {
-      "type": "hasMany",
-      "model": "Note",
-      "foreignKey": ""
     }
   },
   "acls": [],
