@@ -22,9 +22,6 @@
     "deletedAt": {
       "type": "date"
     },
-    "call_id": {
-      "type": "number"
-    },
     "patient_id": {
       "type": "number"
     }
