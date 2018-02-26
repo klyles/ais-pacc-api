@@ -9,7 +9,7 @@ module.exports = function(Patient) {
     console.log('find by name or phone number '+ filter + ' on '+ log_date);
     console.log(formatDateToString(test_date));
 
-    Patient.find({
+    Patient.filter({
       where: {or:[
         {last_name: {like: escapeRegex(filter) + '%'}},
         {home_phone: {like: escapeRegex(filter) + '%'}},
