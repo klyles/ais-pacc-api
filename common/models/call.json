@@ -10,7 +10,7 @@
       "type": "number"
     },
     "call_outcome_id": {
-      "type": "json"
+      "type": "string"
     },
     "call_note_id": {
       "type": "number"
