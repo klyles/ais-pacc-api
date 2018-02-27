@@ -12,7 +12,6 @@ module.exports = function(Patient) {
     Patient.filter({
       where: {or:[
         {last_name: {like: escapeRegex(filter) + '%'}},
-        {dob: {like: escapeRegex(filter) + '%'}},
         {home_phone: {like: escapeRegex(filter) + '%'}},
         {work_phone: {like: escapeRegex(filter) + '%'}},
         {mobile_phone: {like: escapeRegex(filter) + '%'}},
