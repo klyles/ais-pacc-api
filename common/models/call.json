@@ -15,6 +15,9 @@
     "call_note_id": {
       "type": "number"
     },
+    "call_note_text": {
+      "type": "string"
+    },
     "call_start_date_time": {
       "type": "date"
     },
@@ -22,6 +25,9 @@
       "type": "date"
     },
     "call_agent": {
+      "type": "string"
+    },
+    "call_group": {
       "type": "string"
     },
     "nurses_queue": {
