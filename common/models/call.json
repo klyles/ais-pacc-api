@@ -10,6 +10,9 @@
       "type": "number"
     },
     "call_outcome_id": {
+      "type": "number"
+    },
+    "call_outcome_desc": {
       "type": "string"
     },
     "call_note_id": {
