@@ -5,16 +5,24 @@ module.exports = function(Patient) {
   var log_date = new Date().toISOString();
   var test_date = new Date();
 
-  
+  clearRequireCache();
+
   Patient.byLastNameOrPhoneNumber = function(filter,cb) {
     console.log('find by name or phone number '+ filter + ' on '+ log_date);
     console.log(formatDateToString(test_date));
+
 
     if(/^[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]\s[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]/.test(filter))
     {
       console.log("First Name Last Name Check");
       var vFirstname = filter.split(" ")[0];
       var vLastname = filter.split(" ")[1];
+    }
+    if(/^[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]\s(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/.test(filter))
+    {
+      console.log("Last Name DOB Check");
+      var vLastname = filter.split(" ")[0];
+      var vDob = filter.split(" ")[1];
     }
     if(/^[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]\s[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]\s(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/.test(filter))
     {
@@ -23,6 +31,7 @@ module.exports = function(Patient) {
       var vLastname = filter.split(" ")[1];
       var vDob = filter.split(" ")[2];
     }
+
     if(/^\d\d\d\d/.test(filter))
     {
       var vPhone = filter.trim();
@@ -32,9 +41,9 @@ module.exports = function(Patient) {
     Patient.find({
     where: {
       or:[
-        { and:[{home_phone: {like: escapeRegex(vPhone) + '%'}}]},
-        { and:[{mobile_phone: {like: escapeRegex(vPhone) + '%'}}]},
-        { and:[{work_phone: {like: escapeRegex(vPhone) + '%'}}]},
+        { and:[{home_phone: {like: vPhone + '%'}}]},
+        { and:[{mobile_phone: {like: vPhone + '%'}}]},
+        { and:[{work_phone: {like: vPhone + '%'}}]},
         { and:[{first_name: {like: vFirstname + '%'}}, {last_name: {like: vLastname + '%'}}]},
         { and:[{last_name: {like: vLastname + '%'}}, {dob: {like: vDob + '%'}}]},
         { and:[{first_name: {like: vFirstname + '%'}}, {last_name: {like: '%' + vLastname + '%'}}, {dob: {like: vDob + '%'}}]}
@@ -70,4 +79,9 @@ function formatDateToString(date){
 
    // create the format you want
    return (MM + "/" + dd + "/" + yyyy);
+}
+function clearRequireCache() {
+  Object.keys(require.cache).forEach(function(key) {
+    delete require.cache[key];
+  });
 }
