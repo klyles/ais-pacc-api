@@ -26,7 +26,7 @@
       "type": "string"
     },
     "dob": {
-      "type": "date"
+      "type": "string"
     },
     "gender": {
       "type": "string"
@@ -56,13 +56,13 @@
       "type": "number"
     },
     "home_phone": {
-      "type": "number"
+      "type": "string"
     },
     "work_phone": {
-      "type": "number"
+      "type": "string"
     },
     "mobile_phone": {
-      "type": "number"
+      "type": "string"
     },
     "email": {
       "type": "string"

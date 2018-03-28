@@ -5,22 +5,45 @@ module.exports = function(Patient) {
   var log_date = new Date().toISOString();
   var test_date = new Date();
 
+  
   Patient.byLastNameOrPhoneNumber = function(filter,cb) {
     console.log('find by name or phone number '+ filter + ' on '+ log_date);
     console.log(formatDateToString(test_date));
 
-    Patient.find({
-      where: {or:[
-        {last_name: {like: escapeRegex(filter) + '%'}},
-        {home_phone: {like: escapeRegex(filter) + '%'}},
-        {work_phone: {like: escapeRegex(filter) + '%'}},
-        {mobile_phone: {like: escapeRegex(filter) + '%'}},
-        {email: {like: escapeRegex(filter) + '%'}}
-      ]}, order: 'last_name ASC ,, first_name ASC',
+    if(/^[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]\s[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]/.test(filter))
+    {
+      console.log("First Name Last Name Check");
+      var vFirstname = filter.split(" ")[0];
+      var vLastname = filter.split(" ")[1];
+    }
+    if(/^[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]\s[a-zA-Z]+(['.][a-zA-Z]+)?[a-zA-Z]\s(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/.test(filter))
+    {
+      console.log("First Name Last Name DOB Check");
+      var vFirstname = filter.split(" ")[0];
+      var vLastname = filter.split(" ")[1];
+      var vDob = filter.split(" ")[2];
+    }
+    if(/^\d\d\d\d/.test(filter))
+    {
+      var vPhone = filter.trim();
+      console.log("Phone Number");
+    }
 
-      }, function(err, patient) {
-        cb(null,patient);
-    });
+    Patient.find({
+    where: {
+      or:[
+        { and:[{home_phone: {like: escapeRegex(vPhone) + '%'}}]},
+        { and:[{mobile_phone: {like: escapeRegex(vPhone) + '%'}}]},
+        { and:[{work_phone: {like: escapeRegex(vPhone) + '%'}}]},
+        { and:[{first_name: {like: vFirstname + '%'}}, {last_name: {like: vLastname + '%'}}]},
+        { and:[{last_name: {like: vLastname + '%'}}, {dob: {like: vDob + '%'}}]},
+        { and:[{first_name: {like: vFirstname + '%'}}, {last_name: {like: '%' + vLastname + '%'}}, {dob: {like: vDob + '%'}}]}
+      ] //End OR
+    },  order: 'last_name ,, first_name ,, DOB',
+
+        }, function(err, patient) {
+          cb(null,patient);
+      });
   };
 
   Patient.remoteMethod('byLastNameOrPhoneNumber',
@@ -28,7 +51,7 @@ module.exports = function(Patient) {
     description: 'Search for patient by last name or phone number',
     http: {path: '/search', verb: 'get'},
     accepts:{arg: 'filter', type: 'string'},
-    returns:{arg:'filter', type:'last_name'}
+    returns:{arg:'filter', type:'string'}
   }
 );
 };
